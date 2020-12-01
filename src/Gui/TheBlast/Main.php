@@ -26,31 +26,15 @@ class Main extends PluginBase{
     public function onCommand(CommandSender $player, Command $cmd, string $label, array $args) : bool{
         switch($cmd->getName()){
             case "tgui":
-                if(!$player instanceof Player){
-                    $player->sendMessage("Youve been transfered");
-                    return true;
-                }
-                $this->tgui($player);
-                break;
-        }
-        return true;
-    }
-
-    public function tgui(Player $player){
-        $menu = InvMenu::create(InvMenu::TYPE_DOUBLE_CHEST);
-        $menu->readOnly();
-        $menu->setListener(\Closure::fromCallable([$this, "GUIListener"]));
-        $menu->setName("Transfer");
-        $menu->send($player);
-        $inv = $menu->getInventory();
-        $feather = Item::get(Item::FEATHER)->setCustomName("Skywars");
-        $inv->setItem(1, $feather);
-    }
-
-    public function GUIListener(Player $player, Item $itemClicked){
-        if($itemClicked->getId() == 288){
-            $player->sendMessage("transfer");
-            $player->transfer("fi2.falixnodes.net", 46220);
-        }
-    }
-}
+             if($sender instanceof Player){
+                $menu = InvMenu::create(InvMenu::TYPE_DOUBLE_CHEST);
+                $inv = $menu->getInventory();
+                $inv->addItem(Item::get(160:7, 0, 1));
+                $inv->addItem(Item::get(160:7, 0, 1));
+                $menu->setListener(function (Player $player, Item $item, Item $itemClickedWith, SlotChangeAction $action){
+                    if($item->getId() == 160:7){
+                        $player->removeWindow($action->getInventory());
+                        $player->sendCommand
+                    }
+                });
+                
