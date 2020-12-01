@@ -49,9 +49,15 @@ class Main extends PluginBase {
       $menu->setListener([$this, "GUiListener"]);
       $menu->setName("Transfer");
       $menu->send(player);
+      $inv = menu->getInventory();
+      $feather= Item::get(Item::FEATHER)->setCustomName("Skywars");
+      $inv->setItem(1, $feather);
     }
     
     public function GUIListener(Player $player, Item $itemClicked) {
-      
+      if($itemClicked->getId() == 288) {
+        $player->sendMessage("transfer");
+        $player->transfer("", 
+      }
     }
   }
