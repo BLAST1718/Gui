@@ -1,1 +1,8 @@
-
+name: TGui
+main: Gui\TheBlast\Main
+author: TheBlast
+version: 1.0.0
+api: 3.0.0
+command:
+ tgui:
+  description: opens transfer gui
