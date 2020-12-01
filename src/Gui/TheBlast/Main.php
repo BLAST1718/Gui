@@ -38,8 +38,20 @@ class Main extends PluginBase {
         $player->sendMessage("Youve been transfered");
         return true;
       }
-      
+      this->tgui($player);
       break;
     }
     return true;
+    
+    public function tgui(Player $player) {
+      $menu = InvMenu::create(InvMenu::TYPE_DOUBLE_CHEST);
+      $menu->readOnly();
+      $menu->setListener([$this, "GUiListener"]);
+      $menu->setName("Transfer");
+      $menu->send(player);
+    }
+    
+    public function GUIListener(Player $player, Item $itemClicked) {
+      
+    }
   }
