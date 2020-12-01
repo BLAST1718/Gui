@@ -46,7 +46,7 @@ class Main extends PluginBase {
     public function tgui(Player $player) {
       $menu = InvMenu::create(InvMenu::TYPE_DOUBLE_CHEST);
       $menu->readOnly();
-      $menu->setListener([$this, "GUiListener"]);
+      $menu->setListener([$this, "GUIListener"]);
       $menu->setName("Transfer");
       $menu->send(player);
       $inv = menu->getInventory();
@@ -57,7 +57,7 @@ class Main extends PluginBase {
     public function GUIListener(Player $player, Item $itemClicked) {
       if($itemClicked->getId() == 288) {
         $player->sendMessage("transfer");
-        $player->transfer("", 
+        $player->transfer("fi2.falixnodes.net", 46220);
       }
     }
   }
